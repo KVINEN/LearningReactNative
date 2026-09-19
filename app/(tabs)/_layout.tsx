@@ -9,9 +9,13 @@ const tabBar = components.tabBar;
 
 const TabIcon = ({ focused, icon }: TabIconProps) => {
   return (
-    <View className="tabs-icon">
+    <View className="tabs-icon items-center justify-center flex-1 w-full h-full">
       <View className={clsx("tabs-pill", focused && "tabs-active")}>
-        <Image source={icon} resizeMode="contain" className="tabs-glyph" />
+        <Image
+          source={icon}
+          className="tabs-glyph"
+          style={{ width: 30, height: 30 }}
+        />
       </View>
     </View>
   );
@@ -21,25 +25,29 @@ const TabLayout = () => {
 
   return (
     <Tabs
+      safeAreaInsets={{ bottom: 0 }}
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
-          bottom: Math.max(insets.bottom, tabBar.horizontalInset),
+          bottom: insets.bottom,
           height: tabBar.height,
           marginHorizontal: tabBar.horizontalInset,
           borderRadius: tabBar.radius,
           backgroundColor: colors.primary,
           borderTopWidth: 0,
           elevation: 0,
+          shadowOpacity: 0,
         },
         tabBarItemStyle: {
-          paddingVertical: tabBar.height / 2 - tabBar.iconFrame / 1.6,
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
         },
         tabBarIconStyle: {
-          width: tabBar.iconFrame,
-          height: tabBar.iconFrame,
+          flex: 1,
+          justifyContent: "center",
           alignItems: "center",
         },
       }}
