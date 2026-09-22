@@ -4,6 +4,20 @@
 
 @import "nativewind/theme";
 
+@source "./app";
+@source "./constants";
+@source "./components";
+
+:root {
+  --font-sans: sans-regular;
+  @media ios {
+    --font-sans: sans-regular;
+  }
+  @media android {
+    --font-sans: sans-regular;
+  }
+}
+
 @theme {
   --color-background: #fff9e3;
   --color-foreground: #081126;
@@ -36,6 +50,7 @@
   --spacing-20: 80px;
   --spacing-24: 96px;
   --spacing-30: 120px;
+  --spacing-50: 200px;
 
   --font-sans: sans-regular;
   --font-sans-light: sans-light;
@@ -45,7 +60,6 @@
   --font-sans-extrabold: sans-extrabold;
 }
 
-@layer components {
   .tabs-icon {
     @apply size-12 items-center justify-center;
   }
@@ -417,4 +431,4 @@
   .category-chip-text-active {
     @apply text-accent;
   }
-}
+
