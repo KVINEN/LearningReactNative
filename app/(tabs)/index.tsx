@@ -1,12 +1,16 @@
 import ListHeading from "@/components/ListHeading";
-import UpcommingSubscriptionCard from "@/components/UpcommingSubscriptionCard";
-import { HOME_BALANCE, HOME_USER } from "@/constants/data";
+import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
+import {
+  HOME_BALANCE,
+  HOME_USER,
+  UPCOMING_SUBSCRIPTIONS,
+} from "@/constants/data";
 import { icons } from "@/constants/icons";
 import images from "@/constants/images";
 import { formatCurrency } from "@/libs/utils";
 import dayjs from "dayjs";
 import { styled } from "nativewind";
-import { Image, Text, View } from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 const SafeAreaView = styled(RNSafeAreaView);
@@ -35,10 +39,17 @@ export default function App() {
         </View>
       </View>
       <View>
-        <ListHeading title="upcomming" />
+        <ListHeading title="Upcomming" />
+        <FlatList
+          data={UPCOMING_SUBSCRIPTIONS}
+          renderItem={({ item }) => <UpcomingSubscriptionCard {...item} />}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
       </View>
       <View>
-        <UpcommingSubscriptionCard title="All Subscriptions" />
+        <ListHeading title="All Subscriptions" />
       </View>
     </SafeAreaView>
   );
