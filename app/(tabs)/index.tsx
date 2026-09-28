@@ -1,7 +1,9 @@
 import ListHeading from "@/components/ListHeading";
+import SubscriptionCard from "@/components/SubscriptionCard";
 import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
 import {
   HOME_BALANCE,
+  HOME_SUBSCRIPTIONS,
   HOME_USER,
   UPCOMING_SUBSCRIPTIONS,
 } from "@/constants/data";
@@ -46,10 +48,14 @@ export default function App() {
           keyExtractor={(item) => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={
+            <Text className="home-empty-state">No Upcoming renewal yet.</Text>
+          }
         />
       </View>
       <View>
         <ListHeading title="All Subscriptions" />
+        <SubscriptionCard {...HOME_SUBSCRIPTIONS[0]} />
       </View>
     </SafeAreaView>
   );
